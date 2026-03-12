@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caribe Villas — Property Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* ── Print-optimized brochure ── */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+      color: #1A1A1A;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── PAGE 1: COVER ── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: #fff;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%);
+      color: #fff;
+    }
+
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .cover-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cover-content {
+      padding: 50mm 15mm 20mm;
+    }
+
+    .cover-label {
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #C9A96E;
+      margin-bottom: 6mm;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32pt;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 5mm;
+      color: #fff;
+    }
+
+    .cover-subtitle {
+      font-size: 10pt;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+      max-width: 380px;
+      margin-bottom: 10mm;
+    }
+
+    .cover-specs {
+      display: flex;
+      gap: 8mm;
+      padding-top: 6mm;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .cover-spec {
+      text-align: center;
+    }
+
+    .cover-spec-value {
+      font-size: 16pt;
+      font-weight: 600;
+      color: #C9A96E;
+      display: block;
+      margin-bottom: 1mm;
+    }
+
+    .cover-spec-label {
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .cover-price {
+      position: absolute;
+      top: 12mm;
+      right: 15mm;
+      background: #C9A96E;
+      color: #fff;
+      padding: 4mm 8mm;
+      font-size: 11pt;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .cover-brand {
+      position: absolute;
+      top: 12mm;
+      left: 15mm;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 13pt;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PAGE 2: DETAILS ── */
+    .details-page {
+      padding: 15mm;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .details-header {
+      text-align: center;
+      margin-bottom: 8mm;
+      padding-bottom: 6mm;
+      border-bottom: 1px solid #e8e6e1;
+    }
+
+    .details-header .brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 11pt;
+      letter-spacing: 0.08em;
+      color: #1A1A1A;
+      margin-bottom: 3mm;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16pt;
+      font-weight: 400;
+      color: #1A1A1A;
+      margin-bottom: 4mm;
+    }
+
+    .gold-line {
+      width: 30px;
+      height: 1px;
+      background: #C9A96E;
+      margin: 0 auto 6mm;
+    }
+
+    .description {
+      font-size: 9pt;
+      line-height: 1.8;
+      color: #5A5A5A;
+      text-align: center;
+      max-width: 450px;
+      margin: 0 auto 8mm;
+    }
+
+    /* ── Photo Grid ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      margin-bottom: 8mm;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 55mm;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .photo-grid .wide {
+      grid-column: span 2;
+      height: 65mm;
+    }
+
+    /* ── Features Grid ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3mm;
+      margin-bottom: 8mm;
+    }
+
+    .feature-item {
+      background: #FAF9F6;
+      padding: 5mm;
+      text-align: center;
+      border-radius: 2px;
+    }
+
+    .feature-item-icon {
+      font-size: 16pt;
+      margin-bottom: 2mm;
+      color: #C9A96E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-item-icon .lucide {
+      width: 22px;
+      height: 22px;
+    }
+
+    .feature-item-title {
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1A1A1A;
+      margin-bottom: 1mm;
+    }
+
+    .feature-item-desc {
+      font-size: 7pt;
+      color: #5A5A5A;
+      line-height: 1.5;
+    }
+
+    /* ── Location Highlights ── */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+      margin-bottom: 8mm;
+    }
+
+    .highlight-item {
+      background: #FAF9F6;
+      padding: 5mm 3mm;
+      text-align: center;
+      border-radius: 2px;
+    }
+
+    .highlight-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14pt;
+      font-weight: 600;
+      color: #C9A96E;
+      display: block;
+      margin-bottom: 2mm;
+    }
+
+    .highlight-desc {
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5A5A5A;
+    }
+
+    /* ── Contact Bar ── */
+    .contact-bar {
+      margin-top: auto;
+      background: #1A1A1A;
+      color: #fff;
+      padding: 6mm 8mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 2px;
+    }
+
+    .contact-bar-brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 11pt;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-bar-info {
+      text-align: right;
+    }
+
+    .contact-bar-label {
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #C9A96E;
+      margin-bottom: 1mm;
+    }
+
+    .contact-bar-text {
+      font-size: 8pt;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-bar-note {
+      font-size: 7pt;
+      color: #C9A96E;
+      font-style: italic;
+      margin-top: 2mm;
+    }
+
+    /* ── Screen-only download button ── */
+    .download-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1A1A1A;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 100;
+    }
+
+    .download-bar p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+    }
+
+    .btn-download {
+      background: #C9A96E;
+      color: #fff;
+      border: none;
+      padding: 12px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-download:hover {
+      background: #D4BC8B;
+    }
+
+    @media print {
+      .download-bar { display: none !important; }
+      body { background: #fff; }
+    }
+
+    @media screen {
+      .page {
+        margin: 20px auto;
+        box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <div class="cover-bg">
+      <img src="images/11aeb41a-9d66-4c64-8226-afb9c8603970.JPG" alt="Bávaro Villa Aerial">
+    </div>
+    <span class="cover-brand">Caribe Villas</span>
+    <span class="cover-price">US$ 345,000</span>
+    <div class="cover-content">
+      <p class="cover-label" data-en="For Sale by Owner · Bávaro, Punta Cana" data-es="Venta Directa del Propietario · Bávaro, Punta Cana">For Sale by Owner · Bávaro, Punta Cana</p>
+      <h1 data-en="Luxury Beachfront<br>Townhouse Villa" data-es="Villa Townhouse<br>Frente al Mar">Luxury Beachfront<br>Townhouse Villa</h1>
+      <p class="cover-subtitle" data-en="A stunning beachfront townhouse nestled in the heart of Bávaro, steps from the world-famous Playa Bávaro — consistently ranked among the top beaches in the Caribbean." data-es="Un impresionante townhouse frente al mar en el corazón de Bávaro, a pasos de la famosa Playa Bávaro — clasificada constantemente entre las mejores playas del Caribe.">A stunning beachfront townhouse nestled in the heart of Bávaro, steps from the world-famous Playa Bávaro — consistently ranked among the top beaches in the Caribbean.</p>
+      <div class="cover-specs">
+        <div class="cover-spec">
+          <span class="cover-spec-value">4</span>
+          <span class="cover-spec-label" data-en="Bedrooms" data-es="Habitaciones">Bedrooms</span>
+        </div>
+        <div class="cover-spec">
+          <span class="cover-spec-value">3.5</span>
+          <span class="cover-spec-label" data-en="Bathrooms" data-es="Baños">Bathrooms</span>
+        </div>
+        <div class="cover-spec">
+          <span class="cover-spec-value">245 m²</span>
+          <span class="cover-spec-label" data-en="Built Area" data-es="Área Construida">Built Area</span>
+        </div>
+        <div class="cover-spec">
+          <span class="cover-spec-value">3</span>
+          <span class="cover-spec-label" data-en="Levels" data-es="Niveles">Levels</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: DETAILS -->
+  <div class="page details-page">
+    <div class="details-header">
+      <p class="brand">Caribe Villas</p>
+    </div>
+
+    <div style="text-align:center;">
+      <h2 class="section-title" data-en="Property Overview" data-es="Resumen de la Propiedad">Property Overview</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <p class="description">
+      <strong style="color:#C9A96E;font-size:12pt;">US$ 345,000</strong><br><br>
+      <span data-en="This 245 sqm townhouse villa combines timeless architectural elegance with modern luxury living. Featuring authentic coral stone finishes, a luxury Italian modular kitchen, floor-to-ceiling glass partitions, a private jacuzzi for eight, and a rooftop terrace with minibar overlooking the Caribbean Sea." data-es="Esta villa townhouse de 245 m² combina la elegancia arquitectónica atemporal con el lujo moderno. Cuenta con acabados auténticos en piedra coral, una cocina modular italiana de lujo, particiones de vidrio de piso a techo, un jacuzzi privado para ocho personas y una terraza en la azotea con minibar con vista al Mar Caribe.">This 245 sqm townhouse villa combines timeless architectural elegance with modern luxury living. Featuring authentic coral stone finishes, a luxury Italian modular kitchen, floor-to-ceiling glass partitions, a private jacuzzi for eight, and a rooftop terrace with minibar overlooking the Caribbean Sea.</span>
+    </p>
+
+    <!-- Photos -->
+    <div class="photo-grid">
+      <img src="images/18b78e04-043a-4fce-95e1-7745c4061cb4.JPG" alt="Aerial view" class="wide">
+      <img src="images/b091fe1c-8e71-4dca-b6bf-e3bf0072f0ac.JPG" alt="Kitchen">
+      <img src="images/c159f288-d0f2-4680-87ce-fd8b576bbf17.JPG" alt="Bedroom">
+      <img src="images/1151d912-cace-4b6f-885b-40cbfa3dfaca.JPG" alt="Kitchen detail">
+      <img src="images/4f0616e1-216a-4b1c-ab49-77d4bcd79dfe.JPG" alt="Villa detail">
+    </div>
+
+    <!-- Features -->
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="waves"></i></div>
+        <div class="feature-item-title" data-en="Playa Bávaro" data-es="Playa Bávaro">Playa Bávaro</div>
+        <div class="feature-item-desc" data-en="Steps from the beach" data-es="A pasos de la playa">Steps from the beach</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="life-buoy"></i></div>
+        <div class="feature-item-title" data-en="Pool & Beach" data-es="Piscina y Playa">Pool &amp; Beach</div>
+        <div class="feature-item-desc" data-en="Private pool access" data-es="Acceso a piscina privada">Private pool access</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="wine"></i></div>
+        <div class="feature-item-title" data-en="Rooftop Terrace" data-es="Terraza en Azotea">Rooftop Terrace</div>
+        <div class="feature-item-desc" data-en="Minibar & panoramic views" data-es="Minibar y vistas panorámicas">Minibar &amp; panoramic views</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="gem"></i></div>
+        <div class="feature-item-title" data-en="Coral Stone" data-es="Piedra Coral">Coral Stone</div>
+        <div class="feature-item-desc" data-en="Authentic finishes" data-es="Acabados auténticos">Authentic finishes</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="droplets"></i></div>
+        <div class="feature-item-title" data-en="Jacuzzi for 8" data-es="Jacuzzi para 8">Jacuzzi for 8</div>
+        <div class="feature-item-desc" data-en="Outdoor relaxation" data-es="Relajación al aire libre">Outdoor relaxation</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item-icon"><i data-lucide="car"></i></div>
+        <div class="feature-item-title" data-en="Private Parking" data-es="Estacionamiento Privado">Private Parking</div>
+        <div class="feature-item-desc" data-en="Covered & secure" data-es="Techado y seguro">Covered &amp; secure</div>
+      </div>
+    </div>
+
+    <!-- Location Highlights -->
+    <div class="highlights">
+      <div class="highlight-item">
+        <span class="highlight-value">27°C</span>
+        <span class="highlight-desc" data-en="Avg. Temperature" data-es="Temp. Promedio">Avg. Temperature</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-value">15 min</span>
+        <span class="highlight-desc" data-en="PUJ Airport" data-es="Aeropuerto PUJ">PUJ Airport</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-value">Top 10</span>
+        <span class="highlight-desc" data-en="World's Best Beaches" data-es="Mejores Playas del Mundo">World's Best Beaches</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-value">0%</span>
+        <span class="highlight-desc" data-en="Property Tax*" data-es="Impuesto Predial*">Property Tax*</span>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-bar">
+      <div>
+        <div class="contact-bar-brand">Caribe Villas</div>
+        <div class="contact-bar-note" data-en="Direct sale by owner · No brokers" data-es="Venta directa del propietario · Sin intermediarios">Direct sale by owner · No brokers</div>
+      </div>
+      <div class="contact-bar-info">
+        <div class="contact-bar-label" data-en="Contact Us" data-es="Contáctenos">Contact Us</div>
+        <div class="contact-bar-text">caribevillas.com · WhatsApp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen-only download bar -->
+  <div class="download-bar">
+    <p data-en="Save this brochure as PDF" data-es="Guarda este folleto como PDF">Save this brochure as PDF</p>
+    <button class="btn-download" onclick="window.print()" data-en="Download PDF" data-es="Descargar PDF">Download PDF</button>
+  </div>
+
+<script>
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // Language detection: read ?lang= param or localStorage
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || localStorage.getItem('caribe-lang') || 'en';
+
+    if (lang === 'es') {
+      document.documentElement.lang = 'es';
+      document.querySelectorAll('[data-es]').forEach(function(el) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = el.getAttribute('data-es');
+        } else {
+          el.innerHTML = el.getAttribute('data-es');
+        }
+      });
+      // Re-init Lucide after innerHTML changes
+      lucide.createIcons();
+    }
+  })();
+</script>
+</body>
+</html>

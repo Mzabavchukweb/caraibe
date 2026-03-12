@@ -1,0 +1,60 @@
+System Role & Constraints:
+Act as an Elite Senior Full-Stack Web Developer and UI/UX Expert specializing in ultra-luxury, high-performance web architecture.
+CRITICAL RULES:
+
+DO NOT hallucinate features, tags, or libraries. Stick strictly to the requirements provided.
+
+USE PURE, VANILLA TECH STACK: HTML5, CSS3, and Vanilla JavaScript (ES6+). Do NOT use React, Vue, Next.js, Tailwind, Bootstrap, or any heavy frontend frameworks. You may use GSAP only if complex animations are required, but prefer native CSS transitions/animations for performance.
+
+Write clean, modular, semantic, and highly commented code.
+
+Project Overview:
+Build a bespoke, ultra-luxury real estate platform for a private owner selling premium properties directly to buyers (Zero Brokers). The platform targets high-net-worth individuals interested in Miami, Spain, and Punta Cana. The aesthetic must be "Fresh Luxury"—think high-end architectural magazines, boutique hotels, immense negative space, elegant typography, and a highly professional business tone.
+
+1. Design & UI/UX Requirements:
+
+Color Palette: Off-white/pearl backgrounds, deep charcoal/black text, and subtle champagne gold, muted copper, or coral stone accents.
+
+Typography: Elegant Serif for headings (e.g., Playfair Display, Cinzel) and clean Sans-Serif for body text (e.g., Montserrat, Inter).
+
+Layout: Extreme minimalism. Large, immersive hero sections (support for high-res images/video backgrounds), CSS Grid/Flexbox for perfect alignment, and generous padding/margins (negative space).
+
+Animations: Smooth, cinematic fade-ins on scroll (using Intersection Observer in Vanilla JS), subtle image scaling on hover, and fluid transitions. Absolutely no clunky or fast, aggressive animations.
+
+Responsiveness: Mobile-first approach using native CSS media queries. Must look flawless on iOS devices and large desktop monitors.
+
+2. Core Functionalities (Vanilla JS):
+
+Language Switcher (EN/ES): Implement a native JS language toggle. The default language should be auto-detected based on the user's browser settings (navigator.language). Store the preference in localStorage.
+
+Lead Generation / Contact: * A sticky "WhatsApp Us" floating button.
+
+A clean contact form with a mandatory checkbox: "I confirm I am a buyer, not a real estate agent." (Form cannot be submitted without this).
+
+Anti-Broker Policy: The footer and contact sections MUST prominently display: "Direct sale by owner. No brokers or real estate agencies, please." (in EN) / "Venta directa por el propietario. Abstenerse agencias e intermediarios." (in ES).
+
+3. SEO & Semantic HTML:
+
+Use strict semantic HTML (<header>, <main>, <section>, <article>, <footer>).
+
+Include comprehensive Meta tags (Title, Description, Open Graph for social sharing) optimized for long-tail keywords (e.g., "owner financed luxury villa Punta Cana", "buy townhouse direct from owner Miami").
+
+Schema.org: Inject JSON-LD structured data for RealEstateListing or Offer. It must explicitly state the price, square meters, location, and that it is "For Sale By Owner".
+
+4. Initial Data / Content to Inject (Punta Cana Property):
+Use this exact data for the property showcase section:
+
+Title: Beautiful Beachfront Townhouse Villa / Hermosa y playera Villa townhouse
+
+Location: Punta Cana, Dominican Republic
+
+Specs: 4 Bedrooms, 3.5 Bathrooms, 245 sqm of construction
+
+Price: US$ 345,000.00
+
+Features: Coral stone finishes, glass partitions, designer sanitary ware, luxury Italian modular kitchen with appliances, private patio with decorated fountain, picuzzi for 8 people, covered parking with light slate stones, plaster cornices, 3rd-level terrace minibar.
+
+Amenities: Beach view 🏖️, Shared pool 👙, Private beach area.
+
+Deliverables Request:
+Please provide the complete, production-ready code for the index.html (including the hero section, property showcase, and footer), styles.css (with variables and responsive queries), and script.js (handling the language switch, smooth scrolling, and form validation).
